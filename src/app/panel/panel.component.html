@@ -1,0 +1,30 @@
+<!-- <div class="panel default" (click) = "panelClicked()">
+    <div class="panel panel-heading">{{header}}</div>
+    <div class="panel panel-body">{{body}}</div>
+</div> -->
+<div class="well">
+    <h4>Panel Component Demo:</h4>
+    <h5>
+        <p>
+                For this we use ng content with select attribute with a class binding eg .header or .body. This is replaced by an element
+                having the class as heading/body/footer.
+                If we use a div or span in the consumer it will create an extra div/span but if we use ng container in app component html 
+                it will just replace the content inside the ng container
+        </p>
+    </h5>
+    <div class="panel panel-default">
+            <div class="panel-heading">
+                <!-- ng content will be replaced by element having class as heading -->
+                <ng-content select = ".heading"></ng-content>
+            </div>
+            <div class="panel-body">
+                <!-- ng content will be replaced by element having class as body -->
+                <ng-content select = ".body"></ng-content>
+            </div>
+            <div class="panel-footer">
+                <!-- ng content will be replaced by element having class as footer -->
+                <ng-content select = ".footer"></ng-content>
+            </div>
+        </div>       
+
+</div>

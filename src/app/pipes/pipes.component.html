@@ -1,0 +1,16 @@
+<div class = "well">
+<h1>Pipes Demo</h1>
+<ul>
+    <li>{{data.title | uppercase}}</li>
+    <li>{{data.rating | number:'1.2-2'}}</li>
+    <li>{{data.total | number}}</li>
+    <li>{{data.price | currency:'INR':true:'6.3-3'}}</li>
+    <li>{{data.releaseDate| date:'yyyy-MM-dd'}}</li>
+</ul>
+
+
+<br/>
+<br/>
+<h4>Custom Pipe:</h4>
+{{text | summary:100:100}}
+</div>

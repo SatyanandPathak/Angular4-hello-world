@@ -1,0 +1,13 @@
+
+
+<div class = "well">
+        <div *ngIf="isSelected">
+                Is selected component
+        </div>
+        
+
+    <div class = "glyphicon" [class.glyphicon-star] = "isSelected" 
+    [class.glyphicon-star-empty] = "!isSelected"
+    (click) = "onClick()">
+</div>
+</div>

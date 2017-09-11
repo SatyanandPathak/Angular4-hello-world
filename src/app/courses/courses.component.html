@@ -1,0 +1,40 @@
+
+<h2>{{getTitle()}}</h2>
+
+<div class = "well">
+<ul>
+    <li *ngFor="let course of getCourses()">
+        {{course}}
+    </li>
+</ul>
+
+<!--  from component to view  inputValue is picked from Component-->
+<input type="text" [value] = "inputValue"/>
+
+<!--  Class binding from component to view-->
+<button (click) = "classBindingDemo()" class = "btn btn-primary" [class.disabled] = "isDisabled">class binding</button>
+
+<!--  Event binding from view to cpmponent-->
+<button (click) = "buttonClick()">event binding</button>
+
+<!--  Event filtering from view to component-->
+<input type = "text" (keyup.enter) = "eventFiltering($event)" value = "Event filtering. Press enter"/>
+<!--  Capturing values from fields using method parameters-->
+<input type ="text" #myVal (keyup.enter) = "captureValue(myVal.value)" value = "Capture Value"/>
+
+<!--One way binding ends here -->
+
+<!--  Capturing values from fields using two way binding-->
+<input type = "text" [value] = "twoWayBindingValue" 
+                (keyup.enter) = "twoWayBindingValue = $event.target.value; twoWayBinding()"/>
+
+
+<!--  Capturing values from fields using two way binding better way-->              
+<input type = "text" [(ngModel)] = "twoWayBindingValueBetterVal" 
+                (keyup.enter) = "twoWayBindingBettter()"/>
+
+
+</div>
+
+
+

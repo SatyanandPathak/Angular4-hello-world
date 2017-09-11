@@ -1,0 +1,88 @@
+<div class="well">
+    <h3>Directives demo:</h3>
+    <h4>NG IF demo: It does not load the element into dom if evaluates to false</h4>
+    <div *ngIf="myList.length > 0">
+        Elements there in my list
+    </div>
+    <div *ngIf="myList.length == 0">
+        List is empty
+    </div>
+
+
+    <h4>NG IF-ELSE demo: Basically using ng-template as reusable component loaded with condition into a div</h4>
+    <div *ngIf="myList.length > 0; else emptyList">
+        Elements there in my list
+    </div>
+    <ng-template #emptyList>
+        List is empty
+    </ng-template>
+    <h5>NG IF-ELSE demo: Another approach where we used a div for condition and render the templates</h5>
+    <div *ngIf="myList.length > 0; then thenTemplate; else elseTemplate"></div>
+    <ng-template #thenTemplate>
+        List is empty
+    </ng-template>
+    <ng-template #elseTemplate>
+        Elements there in the list
+    </ng-template>
+
+    <h4>Using hidden property:</h4>
+    <div [hidden] = "myList.length == 0">
+        Elements there in the list
+    </div>
+    <div [hidden] = "myList.length > 0">
+        List is empty
+    </div>
+
+    <h4>Using ngSwitch case for Pills implementation:</h4>
+    <ul class="nav nav-pills">
+        <li class = "pointer-link" [class.active] = "viewMode == 'HOME'">
+            <a (click) = "viewMode='HOME'"><span class = "glyphicon glyphicon-home"></span> Home</a>
+        </li>
+        <li class = "pointer-link" [class.active] = "viewMode == 'CONTACTS'">
+            <a (click) = "viewMode = 'CONTACTS'"><span class = "glyphicon glyphicon-earphone"></span> Contacts</a>
+        </li>
+        <li class = "pointer-link" [class.active] = "viewMode == 'USER'">
+            <a (click) = "viewMode = 'USER'"> <span class = "glyphicon glyphicon-user"></span> User</a>
+        </li>
+    </ul>
+
+    <span [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'HOME'">
+        home content ...
+    </div>
+    <div *ngSwitchCase="'CONTACTS'">
+        Contacts content ...
+    </div>
+    <div *ngSwitchCase = "'USER'">
+        User info content...
+    </div>
+    <p *ngSwitchDefault>
+        Nothing to display
+    </p>
+    </span>
+
+    <h4>ngFor demo :</h4>
+    <ul>
+        <li *ngFor="let employee of employees; even as isEven">
+            <span [class.pointer-link] = "!isEven">{{employee.id}} - {{employee.name}}</span>
+        </li>
+    </ul>
+
+    <h4>ng For and trackBy demo: the dom update can be tracked by id object id instead of memory</h4>
+    <input type="button" value="Load" (click) = "loadObjects()">
+    <h5>Less performant way using ngFor</h5>
+    <ul>
+        <li *ngFor="let object of sampleObject">
+            {{object.id}} - {{object.name}}
+        </li>
+    </ul>
+    <h5>More performant way using track by</h5>
+    <ul>
+        <li *ngFor="let object of sampleObject; trackBy:trackObject">
+            {{object.id}} - {{object.name}}
+        </li>
+    </ul>
+
+    <h1>ng class Demo:</h1>
+
+</div>

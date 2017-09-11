@@ -1,0 +1,45 @@
+<div class="well">
+
+    <form #udf = "ngForm" (ngSubmit) = "submitUserDetails(udf.value.userDetails)">
+        <!-- user details group -->
+        <div ngModelGroup = "userDetails">
+            <!-- User Name fields -->
+           <div class="form-group row">
+                <label class="col-xs-1" for="userName">User Name:</label>
+                <div class = "col-xs-2">
+                    <input 
+                    required 
+                    minlength = "7" 
+                    maxLength = "30" 
+                    autocomplete="off"
+                    class = "form-control" 
+                    type="text" 
+                    ngModel name = "userName"
+                    #userName = "ngModel" (change) = "logDetails(userName)"/>
+                </div>
+                <div *ngIf="userName.touched && userName.invalid" class="col-xs-2 alert alert-danger">
+                    <div *ngIf="userName.errors.required">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        User Name is mandatory
+                    </div>
+                    <div *ngIf="userName.errors.minlength">
+                            <span class="glyphicon glyphicon-alert"></span>
+                            User Name Min length is {{userName.errors.minlength.requiredLength}}
+                    </div>
+                </div>  
+                  
+           </div>
+           <!-- Password field -->
+           <div class="form-group row">
+               <label for="password" class="col-xs-1">Password:</label>
+               <div class="col-xs-2"><input class = "form-control" ngModel name = "password" type="password"></div>
+           </div>
+           {{udf.value | json}}
+           <div>
+               <button class="btn btn-primary" [disabled] = "udf.invalid">Submit</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

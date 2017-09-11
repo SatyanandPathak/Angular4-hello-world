@@ -1,0 +1,7 @@
+<div class = "well">
+    <h3>Likes Assignment</h3>
+    <div class="glyphicon" [class.glyphicon-heart] = "isSelected"
+    [class.glyphicon-heart-empty] = "!isSelected"
+     (click) = "onHeartClick()"></div>
+         {{totalLikes}}
+</div>
